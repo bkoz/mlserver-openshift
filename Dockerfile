@@ -19,7 +19,7 @@ RUN pip3 install pip mlserver mlserver_sklearn -U
 USER 1001
 WORKDIR ${APP_ROOT}
 
-COPY . ${WORKDIR} 
+COPY . ${WORKDIR}/src 
 
 EXPOSE 8080 8082
 
