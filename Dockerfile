@@ -1,5 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.1
-LABEL maintainer="Bob Kozdemba <bkozdemba@gmail.com>""
+LABEL maintainer="Bob Kozdemba <bkozdemba@gmail.com>"
 
 ### Setup user for build execution and application runtime
 ENV APP_ROOT=/opt/app-root
