@@ -7,7 +7,7 @@ RUN mkdir -p ${APP_ROOT}/{bin,src} && \
     chmod -R u+x ${APP_ROOT}/bin && chgrp -R 0 ${APP_ROOT} && chmod -R g=u ${APP_ROOT}
 ENV PATH=${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
 
-RUN yum --disableplugin=subscription-manager -y module enable python:3.9 \
+RUN yum --disableplugin=subscription-manager -y module enable python \
   && yum --disableplugin=subscription-manager -y install python3 \
   && yum --disableplugin=subscription-manager clean all
 
