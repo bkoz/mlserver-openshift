@@ -15,11 +15,12 @@ RUN yum --disableplugin=subscription-manager -y install make gcc-c++ python39 py
 RUN alternatives --set python /usr/bin/python3.9
 RUN pip3 install pip mlserver mlserver_sklearn -U 
 
+WORKDIR ${APP_ROOT}
 COPY . ${WORKDIR}/src 
 
 ### Containers should NOT run as root as a good practice
 USER 1001
-WORKDIR ${APP_ROOT}
+
 
 EXPOSE 8080 8082
 
