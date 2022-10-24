@@ -16,7 +16,7 @@ RUN alternatives --set python /usr/bin/python3.9
 RUN pip3 install pip mlserver mlserver_sklearn -U 
 
 WORKDIR ${APP_ROOT}
-COPY . ${WORKDIR}/src 
+COPY . ${WORKDIR}
 
 ### Containers should NOT run as root as a good practice
 USER 1001
