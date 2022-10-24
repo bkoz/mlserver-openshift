@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.6
+FROM registry.access.redhat.com/ubi8/python-39
 LABEL maintainer="Bob Kozdemba <bkozdemba@gmail.com>"
 
 ### Setup user for build execution and application runtime
@@ -12,8 +12,8 @@ RUN yum --disableplugin=subscription-manager -y install make gcc-c++ python39 py
 
 # ADD index.php /var/www/html
 
-RUN alternatives --set python /usr/bin/python3.9
-RUN pip3 install pip mlserver mlserver_sklearn -U 
+# RUN alternatives --set python /usr/bin/python3.9
+RUN pip install pip mlserver mlserver_sklearn -U 
 
 WORKDIR ${APP_ROOT}
 COPY . ${WORKDIR}
