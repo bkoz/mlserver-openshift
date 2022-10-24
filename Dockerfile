@@ -13,7 +13,7 @@ ENV PATH=${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
 # ADD index.php /var/www/html
 
 # RUN alternatives --set python /usr/bin/python3.9
-RUN pip install pip mlserver mlserver_sklearn -U 
+RUN pip install mlserver mlserver_sklearn
 
 WORKDIR ${APP_ROOT}
 COPY . ${WORKDIR}
