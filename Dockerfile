@@ -7,7 +7,7 @@ RUN mkdir -p ${APP_ROOT}/{bin,src} && \
     chmod -R u+x ${APP_ROOT}/bin && chgrp -R 0 ${APP_ROOT} && chmod -R g=u ${APP_ROOT}
 ENV PATH=${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
 
-RUN yum --disableplugin=subscription-manager -y install make gcc-c++ python3 python3-pip python36-devel\
+RUN yum --disableplugin=subscription-manager -y install make gcc-c++ python39 python3-pip python39-devel\
   && yum --disableplugin=subscription-manager clean all
 
 # ADD index.php /var/www/html
