@@ -14,7 +14,7 @@ RUN yum --disableplugin=subscription-manager -y install python3 \
 USER 1001
 WORKDIR ${APP_ROOT}
 
-ADD index.php /var/www/html
+# ADD index.php /var/www/html
 
 RUN pip install pip mlserver mlserver_sklearn -U 
 
