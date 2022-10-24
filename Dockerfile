@@ -10,13 +10,13 @@ ENV PATH=${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
 RUN yum --disableplugin=subscription-manager -y install gcc-c++ python3 python3-pip \
   && yum --disableplugin=subscription-manager clean all
 
-### Containers should NOT run as root as a good practice
-USER 1001
-WORKDIR ${APP_ROOT}
-
 # ADD index.php /var/www/html
 
 RUN pip3 install pip mlserver mlserver_sklearn -U 
+
+### Containers should NOT run as root as a good practice
+USER 1001
+WORKDIR ${APP_ROOT}
 
 EXPOSE 8080 8082
 
