@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.1
+FROM registry.access.redhat.com/ubi8/ubi:8.6
 LABEL maintainer="Bob Kozdemba <bkozdemba@gmail.com>"
 
 ### Setup user for build execution and application runtime
