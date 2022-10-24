@@ -7,12 +7,6 @@ RUN mkdir -p ${APP_ROOT}/{bin,src} && \
     chmod -R u+x ${APP_ROOT}/bin && chgrp -R 0 ${APP_ROOT} && chmod -R g=u ${APP_ROOT}
 ENV PATH=${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
 
-# RUN yum --disableplugin=subscription-manager -y install make gcc-c++ python39 python3-pip python3-devel\
-#  && yum --disableplugin=subscription-manager clean all
-
-# ADD index.php /var/www/html
-
-# RUN alternatives --set python /usr/bin/python3.9
 RUN pip install mlserver mlserver_sklearn
 
 WORKDIR ${APP_ROOT}
@@ -20,7 +14,6 @@ COPY . ${WORKDIR}
 
 ### Containers should NOT run as root as a good practice
 USER 1001
-
 
 EXPOSE 8080 8082
 
