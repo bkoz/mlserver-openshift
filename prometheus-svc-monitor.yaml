@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    seldon-app: mlserver-openshift
+  name: mlserver-openshift
+spec:
+  endpoints:
+  - interval: 30s
+    path: /metrics
+    port: 8082-tcp
+  selector:
+    matchLabels:
+      app: mlserver-openshift
+
+
+
+
+
