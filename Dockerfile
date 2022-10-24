@@ -16,7 +16,7 @@ WORKDIR ${APP_ROOT}
 
 # ADD index.php /var/www/html
 
-RUN pip install pip mlserver mlserver_sklearn -U 
+RUN pip3 install pip mlserver mlserver_sklearn -U 
 
 EXPOSE 8080 8082
 
