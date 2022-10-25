@@ -1,0 +1,22 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+annotations:
+metadata:
+  name: mlsvr
+spec:
+  name: mlgroup
+  predictors:
+    - componentSpecs:
+      - spec:
+          containers:
+            - image: >-
+                quay.io/bkozdemb/mlsvr
+              name: classifier
+      graph:
+        children: []
+        endpoint:
+          type: REST
+        name: classifier
+        type: MODEL
+      name: mlgroup
+      replicas: 1

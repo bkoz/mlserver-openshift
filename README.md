@@ -66,12 +66,10 @@ podman run --name=grafana -it -p 8300:3000 bitnami/grafana
 
 ### Openshift
 
-#### Create a new application
+#### Create a new application and wait for the mlserver pod to build and deploy.
 ```
 oc new-app https://github.com/bkoz/mlserver-openshift
 ```
-
-#### Wait for the pod to build and deploy.
 
 #### Expose the model server service.
 ```
