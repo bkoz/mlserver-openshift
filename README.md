@@ -1,6 +1,8 @@
 # Experimenting with MLServer on Red Hat
 
-## Local Deployment
+## Based on the [sklearn example](https://github.com/SeldonIO/MLServer/tree/master/docs/examples/sklearn).
+
+### Local Deployment
 - RHEL 9.0
 - Python 3.9.10 virtual environment
 
@@ -65,6 +67,8 @@ podman run --name=grafana -it -p 8300:3000 bitnami/grafana
 ```
 
 ### Openshift
+
+- Version 4.10
 
 #### Create a new application and wait for the mlserver pod to build and deploy.
 ```
