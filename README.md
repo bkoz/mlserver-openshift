@@ -10,16 +10,12 @@
 pip install pip jupyterlab mlserver mlserver_sklearn -U
 ```
 
-### MLServer
-
-git clone https://github.com/SeldonIO/MLServer.git
-
-cd MLServer/docs/examples/sklearn
-
 #### Run Jupyter Lab
 ```
 jupyter lab --ip=0.0.0.0
 ```
+
+- Open the `README.ipynb` notebook and run the cells to train and save the SVC model.
 
 #### Start mlserver in a separate window
 ```
@@ -50,7 +46,7 @@ Expected output:
 
 ### Prometheus
 
-Edit local prometheus.yml and bind mount to the container.
+Edit local `prometheus.yml` and bind mount to the container.
 
 Fix SELinux context so bind mount will work
 ```
