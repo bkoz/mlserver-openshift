@@ -15,7 +15,7 @@ COPY . ${WORKDIR}
 ### Containers should NOT run as root as a good practice
 USER 1001
 
-EXPOSE 8080
+EXPOSE 8080 8082
 
 VOLUME ${APP_ROOT}/logs ${APP_ROOT}/data
 
