@@ -65,20 +65,64 @@ podman run --name=grafana -it -p 8300:3000 bitnami/grafana
 ```
 
 ### Openshift
-#### Make a request using the README.ipynb or curl
+
+#### Create a new application
 ```
-HOST=ec2-3-145-152-17.us-east-2.compute.amazonaws.com
+oc new-app https://github.com/bkoz/mlserver-openshift
+```
+
+#### Wait for the pod to build and deploy.
+
+#### Expose the model server service.
+```
+oc expose service mlserver-openshift
+```
+
+#### Get the route and use it to make a request using the README.ipynb notebook or curl.
+```
+oc get routes mlserver-openshift
+```
+
+```
+HOST=mlserver-openshift-ml-mon.apps.ocp.sandbox2395.opentlc.com
 
 curl -X POST -H "Content-Type: application/json" \
 	-d '{"inputs": [ { "name": "predict", "shape": [1,64], "datatype": "FP32", "data": [[0.0, 0.0, 1.0, 11.0, 14.0, 15.0, 3.0, 0.0, 0.0, 1.0, 13.0, 16.0, 12.0, 16.0, 8.0, 0.0, 0.0, 8.0, 16.0, 4.0, 6.0, 16.0, 5.0, 0.0, 0.0, 5.0, 15.0, 11.0, 13.0, 14.0, 0.0, 0.0, 0.0, 0.0, 2.0, 12.0, 16.0, 13.0, 0.0, 0.0, 0.0, 0.0, 0.0, 13.0, 16.0, 16.0, 6.0, 0.0, 0.0, 0.0, 0.0, 16.0, 16.0, 16.0, 7.0, 0.0, 0.0, 0.0, 0.0, 11.0, 13.0, 12.0, 1.0, 0.0]] } ] }' \
-	${HOST}/v2/models/mnist-svm/versions/v0.1.0/infer
+	${HOST}/v2/models/mnist-svm/versions/v0.1.0/infer | jq
 ```
 
-Expected output:
+Sample output:
+```
+{
+  "model_name": "mnist-svm",
+  "model_version": "v0.1.0",
+  "id": "0f71dfbf-829a-4f0f-abcd-960a98eeb44e",
+  "parameters": {
+    "content_type": null,
+    "headers": null
+  },
+  "outputs": [
+    {
+      "name": "predict",
+      "shape": [
+        1
+      ],
+      "datatype": "INT64",
+      "parameters": null,
+      "data": [
+        8
+      ]
+    }
+  ]
+}
 ```
 
-{"model_name":"mnist-svm","model_version":"v0.1.0","id":"5b4368b5-6cb6-4e45-95e5-656e1bfa0c2d","parameters":{"content_type":null,"headers":null},"outputs":[{"name":"predict","shape":[1],"datatype":"INT64","parameters":null,"data":[8]}
-```
+### Setup Prometheus and Grafana
 
+#### Install the operators
+
+#### Create a Prometheus service monitor
+
+#### Create a Grafana Dashboard
 
 
