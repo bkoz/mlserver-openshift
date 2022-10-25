@@ -82,9 +82,43 @@ oc expose service mlserver-openshift
 ```
 oc get routes mlserver-openshift
 ```
-
 ```
 HOST=mlserver-openshift-ml-mon.apps.ocp.sandbox2395.opentlc.com
+```
+
+#### Test the model server and model health
+```
+curl $HOST/v2 | jq 
+```
+Sample output:
+```
+{
+  "name": "mlserver",
+  "version": "1.1.0",
+  "extensions": []
+}
+```
+
+```
+curl http://mlserver-openshift-ml-mon.apps.ocp.sandbox2395.opentlc.com/v2/models/mnist-svm/versions/v0.1.0 | jq .
+```
+Sample output:
+```
+{
+  "name": "mnist-svm",
+  "versions": [],
+  "platform": "",
+  "inputs": [],
+  "outputs": [],
+  "parameters": {
+    "content_type": null,
+    "headers": null
+  }
+}
+```
+
+#### Make a prediction request.
+```
 
 curl -X POST -H "Content-Type: application/json" \
 	-d '{"inputs": [ { "name": "predict", "shape": [1,64], "datatype": "FP32", "data": [[0.0, 0.0, 1.0, 11.0, 14.0, 15.0, 3.0, 0.0, 0.0, 1.0, 13.0, 16.0, 12.0, 16.0, 8.0, 0.0, 0.0, 8.0, 16.0, 4.0, 6.0, 16.0, 5.0, 0.0, 0.0, 5.0, 15.0, 11.0, 13.0, 14.0, 0.0, 0.0, 0.0, 0.0, 2.0, 12.0, 16.0, 13.0, 0.0, 0.0, 0.0, 0.0, 0.0, 13.0, 16.0, 16.0, 6.0, 0.0, 0.0, 0.0, 0.0, 16.0, 16.0, 16.0, 7.0, 0.0, 0.0, 0.0, 0.0, 11.0, 13.0, 12.0, 1.0, 0.0]] } ] }' \
