@@ -98,7 +98,7 @@ Sample output:
 ```
 
 ```
-curl http://mlserver-openshift-ml-mon.apps.ocp.sandbox2395.opentlc.com/v2/models/mnist-svm/versions/v0.1.0 | jq .
+curl $HOST/v2/models/mnist-svm/versions/v0.1.0 | jq .
 ```
 Sample output:
 ```
