@@ -1,2 +1,3 @@
+pip
 mlserver
 mlserver_sklearn
