@@ -78,10 +78,7 @@ oc expose service mlserver-openshift
 
 #### Get the route and use it to make a request using the README.ipynb notebook or curl.
 ```
-oc get routes mlserver-openshift
-```
-```
-HOST=mlserver-openshift-ml-mon.apps.ocp.sandbox2395.opentlc.com
+HOST=$(oc get routes mlserver-openshift -o custom-columns=:.spec.host --no-headers)
 ```
 
 #### Test the model server and model health
